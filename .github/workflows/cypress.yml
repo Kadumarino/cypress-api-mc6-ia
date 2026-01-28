@@ -21,6 +21,9 @@ jobs:
 
       - name: Instalar dependências
         run: npm ci
+
+      - name: Limpar diretório de report
+        run: rm -rf cypress/report && mkdir -p cypress/report
         
       - name: Executar testes Cypress
         run: npx cypress run
