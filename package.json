@@ -8,7 +8,7 @@
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
     "report:merge": "npx mochawesome-merge cypress/report/*.json > cypress/report/report.json",
-    "report:generate": "npx marge cypress/report/report.json -f report -o cypress/report",
+    "report:generate": "if ls cypress/report/*.json 1> /dev/null 2>&1; then npx marge cypress/report/*.json -f report -o cypress/report --inline; else echo 'Nenhum arquivo de report encontrado'; fi",
     "report:open": "open cypress/report/report.html"
   },
   "keywords": [],
