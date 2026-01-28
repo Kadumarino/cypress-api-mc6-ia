@@ -25,6 +25,12 @@ jobs:
       - name: Executar testes Cypress
         run: npx cypress run
 
+      - name: Listar arquivos do diretório de report
+        run: |
+          echo "Arquivos em cypress/report:"
+          ls -lh cypress/report || echo "Diretório não encontrado"
+        if: always()
+
       - name: Unir relatórios mochawesome
         run: npm run report:merge
         if: always()
