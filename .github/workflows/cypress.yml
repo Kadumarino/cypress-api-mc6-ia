@@ -27,15 +27,15 @@ jobs:
 
       - name: Unir relatórios mochawesome
         run: npm run report:merge
-        continue-on-error: true
+        if: always()
 
       - name: Gerar relatório HTML mochawesome
         run: npm run report:generate
-        continue-on-error: true
+        if: always()
 
       - name: Salvar relatório como artefato
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
           path: cypress/report/
-        continue-on-error: true
+        if: always()
