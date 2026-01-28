@@ -1,14 +1,6 @@
 # Node modules
 node_modules/
 
-# Cypress reports
-mochawesome-report/
-mochawesome.json
-
-# Cypress screenshots and videos
-cypress/screenshots/
-cypress/videos/
-
 # Environment files
 .env
 .env.*

@@ -7,8 +7,8 @@
     "test": "cypress run",
     "cypress:open": "cypress open",
     "cypress:run": "cypress run",
-    "report:merge": "npx mochawesome-merge cypress/report/*.json > cypress/report/report.json",
-    "report:generate": "npx marge cypress/report/report.json -f report -o cypress/report",
+    "report:merge": "find cypress/report -name 'mochawesome*.json' -type f | xargs npx mochawesome-merge > cypress/report/report.json || echo 'Nenhum arquivo para merge'",
+    "report:generate": "if [ -f cypress/report/report.json ]; then npx marge cypress/report/report.json -f report -o cypress/report --inline; else echo 'Arquivo report.json não encontrado'; fi",
     "report:open": "open cypress/report/report.html"
   },
   "keywords": [],
