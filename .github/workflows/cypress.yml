@@ -24,7 +24,6 @@ jobs:
         
       - name: Executar testes Cypress
         run: npx cypress run
-        continue-on-error: true
 
       - name: Unir relatórios mochawesome
         run: npm run report:merge
@@ -33,10 +32,10 @@ jobs:
       - name: Gerar relatório HTML mochawesome
         run: npm run report:generate
         continue-on-error: true
-        
+
       - name: Salvar relatório como artefato
         uses: actions/upload-artifact@v4
         with:
           name: mochawesome-report
-          path: cypress/report/report.html
+          path: cypress/report/
         continue-on-error: true
