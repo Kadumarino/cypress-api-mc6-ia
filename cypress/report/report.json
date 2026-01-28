@@ -1,0 +1,289 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 10,
+    "passes": 7,
+    "pending": 0,
+    "failures": 3,
+    "testsRegistered": 10,
+    "passPercent": 70,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false,
+    "start": "2026-01-28T14:00:09.862Z",
+    "end": "2026-01-28T14:00:12.622Z",
+    "duration": 2760
+  },
+  "results": [
+    {
+      "uuid": "88040e24-4db6-47eb-a715-7e889f425a9c",
+      "title": "",
+      "fullFile": "cypress/e2e/criar_agendamento.cy.js",
+      "file": "cypress/e2e/criar_agendamento.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "bb3609eb-b432-4fe4-a156-08af528d0689",
+          "title": "Booking API - POST /booking",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "deve criar um agendamento com sucesso (payload completo)",
+              "fullTitle": "Booking API - POST /booking deve criar um agendamento com sucesso (payload completo)",
+              "timedOut": null,
+              "duration": 797,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = payloadCompleto();\ncy.criarBooking(payload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property(\"bookingid\");\n  expect(response.body).to.have.property(\"booking\");\n  expect(response.body.booking).to.include({\n    firstname: payload.firstname,\n    lastname: payload.lastname,\n    totalprice: payload.totalprice,\n    depositpaid: payload.depositpaid,\n    additionalneeds: payload.additionalneeds\n  });\n  expect(response.body.booking.bookingdates).to.deep.equal(payload.bookingdates);\n});",
+              "err": {},
+              "uuid": "956a2858-3635-4007-b5bf-e7142616ef3d",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve criar agendamento com additionalneeds vazio",
+              "fullTitle": "Booking API - POST /booking deve criar agendamento com additionalneeds vazio",
+              "timedOut": null,
+              "duration": 157,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = payloadAdditionalNeedsVazio();\ncy.criarBooking(payload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.booking.additionalneeds).to.eq(\"\");\n});",
+              "err": {},
+              "uuid": "2e7bbb70-5df6-4d93-8c05-2011effa2fc3",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve criar agendamento sem additionalneeds",
+              "fullTitle": "Booking API - POST /booking deve criar agendamento sem additionalneeds",
+              "timedOut": null,
+              "duration": 156,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = payloadSemAdditionalNeeds();\ncy.criarBooking(payload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.booking).to.not.have.property(\"additionalneeds\");\n});",
+              "err": {},
+              "uuid": "72459268-f968-404d-b029-0fbc65f62f06",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao omitir firstname",
+              "fullTitle": "Booking API - POST /booking deve retornar erro ao omitir firstname",
+              "timedOut": null,
+              "duration": 154,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const _payloadCompleto = payloadCompleto(),\n  {\n    firstname\n  } = _payloadCompleto,\n  payload = (0, _objectWithoutProperties2.default)(_payloadCompleto, _excluded);\ncy.criarBooking(payload, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 500]);\n});",
+              "err": {},
+              "uuid": "0bb6bd60-31ec-47ff-8038-1685e86d1ed5",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao omitir lastname",
+              "fullTitle": "Booking API - POST /booking deve retornar erro ao omitir lastname",
+              "timedOut": null,
+              "duration": 156,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const _payloadCompleto2 = payloadCompleto(),\n  {\n    lastname\n  } = _payloadCompleto2,\n  payload = (0, _objectWithoutProperties2.default)(_payloadCompleto2, _excluded2);\ncy.criarBooking(payload, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 500]);\n});",
+              "err": {},
+              "uuid": "47b7fa0a-cebe-4755-a906-36ce228cd333",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao enviar totalprice como string",
+              "fullTitle": "Booking API - POST /booking deve retornar erro ao enviar totalprice como string",
+              "timedOut": null,
+              "duration": 300,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const payload = _objectSpread(_objectSpread({}, payloadCompleto()), {}, {\n  totalprice: \"cem\"\n});\ncy.criarBooking(payload, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 500]);\n});",
+              "err": {
+                "message": "AssertionError: expected 200 to be one of [ 400, 500 ]",
+                "estack": "AssertionError: expected 200 to be one of [ 400, 500 ]\n    at Context.eval (webpack://aulas-masterclass-turma-seis-ia-cypress/./cypress/e2e/criar_agendamento.cy.js:54:36)\n    at getRet (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122690:20)\n    at tryCatcher (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122701:66)\n    at Context.then (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122952:21)",
+                "diff": "- 200\n+ [ 400, 500 ]\n"
+              },
+              "uuid": "d22512cb-03f7-4a66-936d-94b284f552dc",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao enviar depositpaid como string",
+              "fullTitle": "Booking API - POST /booking deve retornar erro ao enviar depositpaid como string",
+              "timedOut": null,
+              "duration": 287,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const payload = _objectSpread(_objectSpread({}, payloadCompleto()), {}, {\n  depositpaid: \"true\"\n});\ncy.criarBooking(payload, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 500]);\n});",
+              "err": {
+                "message": "AssertionError: expected 200 to be one of [ 400, 500 ]",
+                "estack": "AssertionError: expected 200 to be one of [ 400, 500 ]\n    at Context.eval (webpack://aulas-masterclass-turma-seis-ia-cypress/./cypress/e2e/criar_agendamento.cy.js:61:36)\n    at getRet (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122690:20)\n    at tryCatcher (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122701:66)\n    at Context.then (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122952:21)",
+                "diff": "- 200\n+ [ 400, 500 ]\n"
+              },
+              "uuid": "eb18c506-d8f4-4bad-8a6e-ce72fd297d54",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve retornar erro ao enviar datas inválidas",
+              "fullTitle": "Booking API - POST /booking deve retornar erro ao enviar datas inválidas",
+              "timedOut": null,
+              "duration": 292,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const payload = _objectSpread(_objectSpread({}, payloadCompleto()), {}, {\n  bookingdates: {\n    checkin: \"data-invalida\",\n    checkout: \"outra-invalida\"\n  }\n});\ncy.criarBooking(payload, {\n  failOnStatusCode: false\n}).then(response => {\n  expect(response.status).to.be.oneOf([400, 500]);\n});",
+              "err": {
+                "message": "AssertionError: expected 200 to be one of [ 400, 500 ]",
+                "estack": "AssertionError: expected 200 to be one of [ 400, 500 ]\n    at Context.eval (webpack://aulas-masterclass-turma-seis-ia-cypress/./cypress/e2e/criar_agendamento.cy.js:71:36)\n    at getRet (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122690:20)\n    at tryCatcher (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise.attempt.Promise.try (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:4285:29)\n    at Context.thenFn (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122701:66)\n    at Context.then (https://restful-booker.herokuapp.com/__cypress/runner/cypress_runner.js:122952:21)",
+                "diff": "- 200\n+ [ 400, 500 ]\n"
+              },
+              "uuid": "de21fef1-55b5-4ae2-bbfc-f4af5bc87b45",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve validar tipos dos campos na resposta",
+              "fullTitle": "Booking API - POST /booking deve validar tipos dos campos na resposta",
+              "timedOut": null,
+              "duration": 165,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "cy.criarBooking(payloadCompleto()).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body.bookingid).to.be.a(\"number\");\n  expect(response.body.booking).to.be.an(\"object\");\n  expect(response.body.booking.firstname).to.be.a(\"string\");\n  expect(response.body.booking.lastname).to.be.a(\"string\");\n  expect(response.body.booking.totalprice).to.be.a(\"number\");\n  expect(response.body.booking.depositpaid).to.be.a(\"boolean\");\n  expect(response.body.booking.bookingdates).to.be.an(\"object\");\n  expect(response.body.booking.bookingdates.checkin).to.be.a(\"string\");\n  expect(response.body.booking.bookingdates.checkout).to.be.a(\"string\");\n});",
+              "err": {},
+              "uuid": "d3d6a3e5-8614-4fbb-a49a-2b32e4044558",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            },
+            {
+              "title": "deve criar um agendamento válido com dados aleatórios",
+              "fullTitle": "Booking API - POST /booking deve criar um agendamento válido com dados aleatórios",
+              "timedOut": null,
+              "duration": 161,
+              "state": "passed",
+              "speed": "fast",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const payload = payloadCompleto();\ncy.criarBooking(payload).then(response => {\n  expect(response.status).to.eq(200);\n  expect(response.body).to.have.property(\"bookingid\");\n  expect(response.body).to.have.property(\"booking\");\n  expect(response.body.booking).to.include({\n    firstname: payload.firstname,\n    lastname: payload.lastname,\n    totalprice: payload.totalprice,\n    depositpaid: payload.depositpaid,\n    additionalneeds: payload.additionalneeds\n  });\n  expect(response.body.booking.bookingdates).to.deep.equal(payload.bookingdates);\n});",
+              "err": {},
+              "uuid": "c56f5850-04f1-43af-9fe8-342e92ed3162",
+              "parentUUID": "bb3609eb-b432-4fe4-a156-08af528d0689",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "956a2858-3635-4007-b5bf-e7142616ef3d",
+            "2e7bbb70-5df6-4d93-8c05-2011effa2fc3",
+            "72459268-f968-404d-b029-0fbc65f62f06",
+            "0bb6bd60-31ec-47ff-8038-1685e86d1ed5",
+            "47b7fa0a-cebe-4755-a906-36ce228cd333",
+            "d3d6a3e5-8614-4fbb-a49a-2b32e4044558",
+            "c56f5850-04f1-43af-9fe8-342e92ed3162"
+          ],
+          "failures": [
+            "d22512cb-03f7-4a66-936d-94b284f552dc",
+            "eb18c506-d8f4-4bad-8a6e-ce72fd297d54",
+            "de21fef1-55b5-4ae2-bbfc-f4af5bc87b45"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2625,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/report",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}

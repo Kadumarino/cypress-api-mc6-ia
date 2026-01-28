@@ -1,0 +1,36 @@
+# Node modules
+node_modules/
+
+# Cypress reports
+mochawesome-report/
+mochawesome.json
+
+# Cypress screenshots and videos
+cypress/screenshots/
+cypress/videos/
+
+# Environment files
+.env
+.env.*
+
+# System files
+.DS_Store
+
+# Logs
+*.log
+
+# VSCode settings
+.vscode/
+
+# Coverage
+coverage/
+
+# Output
+/dist/
+/build/
+
+# Mac system files
+Icon?
+
+# Others
+*.tgz
