@@ -107,7 +107,7 @@ describe("Booking API - POST /booking", () => {
   // Exemplo de uso do custom command para request sem header (caso queira testar sem Content-Type)
   // it("deve retornar erro ao omitir Content-Type", () => {
   //   cy.criarBookingSemHeader(defaultPayload, { failOnStatusCode: false }).then((response) => {
-  //     expect(response.status).to.be.oneOf([400, 415, 500]);
+  //     expect(response.status).to.be.oneOf([400, 415, 500]); //
   //   });
   // });
 });
